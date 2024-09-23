@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra, Papel ou Tesoura</title>
+</head>
+<body>
+ 
+    <h1>Jogo: Pedra, Papel ou Tesoura</h1>
+    <p>Escolha sua jogada:</p>
+    
+    <button onclick="jogar('pedra')">Pedra</button>
+    <button onclick="jogar('papel')">Papel</button>
+    <button onclick="jogar('tesoura')">Tesoura</button>
+ 
+    <script>
+        function jogar(escolhaUsuario) {
+            const opcoes = ['pedra', 'papel', 'tesoura'];
+ 
+            const escolhaComputador = opcoes[Math.floor(Math.random() * 3)];
+ 
+            let resultado = '';
+ 
+            resultado += `Você escolheu: ${escolhaUsuario}\n`;
+            resultado += `O computador escolheu: ${escolhaComputador}\n`;
+ 
+            if (escolhaUsuario === escolhaComputador) {
+                resultado += "Empate!";
+            } else if (
+                (escolhaUsuario === 'pedra' && escolhaComputador === 'tesoura') ||
+                (escolhaUsuario === 'tesoura' && escolhaComputador === 'papel') ||
+                (escolhaUsuario === 'papel' && escolhaComputador === 'pedra')
+            ) {
+                resultado += "Você ganhou!";
+            } else {
+                resultado += "O computador ganhou!";
+            }
+ 
+            alert(resultado);
+        }
+    </script>
+ 
+</body>
+</html>
