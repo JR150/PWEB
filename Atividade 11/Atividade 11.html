@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo de Objetos em JavaScript</title>
+</head>
+<body>
+  <h1>Exemplo de Criação de Objetos</h1>
+  
+  <h2>Objeto usando Forma Literal</h2>
+  <p id="objetoLiteral"></p>
+  
+  <h2>Objeto usando Object.create</h2>
+  <p id="objetoCreate"></p>
+  
+  <h2>Objeto usando Object.assign</h2>
+  <p id="objetoAssign"></p>
+  
+  <script>
+    // 1. Usando Forma Literal
+    const funcionarioLiteral = {
+      Matricula: 1234,
+      Nome: "João Silva",
+      Funcao: "Desenvolvedor"
+    };
+    
+    document.getElementById("objetoLiteral").textContent = `Matrícula: ${funcionarioLiteral.Matricula}, Nome: ${funcionarioLiteral.Nome}, Função: ${funcionarioLiteral.Funcao}`;
+    
+    // 2. Usando Object.create
+    const funcionarioPrototype = {
+      exibirInfo: function() {
+        return `Matrícula: ${this.Matricula}, Nome: ${this.Nome}, Função: ${this.Funcao}`;
+      }
+    };
+    
+    const funcionarioCreate = Object.create(funcionarioPrototype);
+    funcionarioCreate.Matricula = 5678;
+    funcionarioCreate.Nome = "Maria Oliveira";
+    funcionarioCreate.Funcao = "Designer";
+    
+    document.getElementById("objetoCreate").textContent = funcionarioCreate.exibirInfo();
+    
+    // 3. Usando Object.assign
+    const funcionarioBase = {
+      Matricula: 9101,
+      Nome: "Carlos Souza",
+      Funcao: "Gerente de Projetos"
+    };
+    
+    const funcionarioAssign = Object.assign({}, funcionarioBase);
+    funcionarioAssign.Funcao = "Diretor de TI";
+    
+    document.getElementById("objetoAssign").textContent = `Matrícula: ${funcionarioAssign.Matricula}, Nome: ${funcionarioAssign.Nome}, Função: ${funcionarioAssign.Funcao}`;
+  </script>
+</body>
+</html>
