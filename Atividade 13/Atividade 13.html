@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de Janela</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    img {
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="titulo">Janela Fechada</h1>
+  <img 
+    id="imagemJanela" 
+    src="https://via.placeholder.com/300x200?text=Janela+Fechada" 
+    alt="Janela Fechada"
+  />
+
+  <script>
+    // URLs das imagens
+    const janelaFechada = "https://via.placeholder.com/300x200?text=Janela+Fechada";
+    const janelaAberta = "https://via.placeholder.com/300x200?text=Janela+Aberta";
+    const janelaQuebrada = "https://via.placeholder.com/300x200?text=Janela+Quebrada";
+
+    // Elementos HTML
+    const imagemJanela = document.getElementById("imagemJanela");
+    const titulo = document.getElementById("titulo");
+
+    // Função para abrir a janela
+    function abrirJanela() {
+      imagemJanela.src = janelaAberta;
+      titulo.textContent = "Janela Aberta";
+    }
+
+    // Função para fechar a janela
+    function fecharJanela() {
+      imagemJanela.src = janelaFechada;
+      titulo.textContent = "Janela Fechada";
+    }
+
+    // Função para quebrar a janela
+    function quebrarJanela() {
+      imagemJanela.src = janelaQuebrada;
+      titulo.textContent = "Janela Quebrada";
+      // Remover eventos para não poder abrir ou fechar mais
+      imagemJanela.removeEventListener("mouseover", abrirJanela);
+      imagemJanela.removeEventListener("mouseout", fecharJanela);
+    }
+
+    // Eventos de mouse
+    imagemJanela.addEventListener("mouseover", abrirJanela);
+    imagemJanela.addEventListener("mouseout", fecharJanela);
+    imagemJanela.addEventListener("click", quebrarJanela);
+  </script>
+
+</body>
+</html>
